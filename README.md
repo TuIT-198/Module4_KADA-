@@ -15,14 +15,14 @@
 
 > 🏷️ **Tên Nhóm:** THEMIS
 
-| # | Họ và Tên | Vai trò |
-|:-:|:----------|:--------|
-| 1 | **Đàm Công Tú** | Data Cleaning & EDA |
-| 2 | **Hà Anh Tuấn** | Data Analysis & Visualization |
-| 3 | **Huỳnh Hoàng Quân** | Dashboard & Reporting |
-| 4 | **Chăm Rốch Thi** | Feature Engineering & Validation |
-| 5 | **Nguyễn Tiến Thành** | Business Insight & Statistics |
-| 6 | **Phạm Thành Long** | Documentation & Data Dictionary |
+| # | Họ và Tên |
+|:-:|:----------|
+| 1 | **Đàm Công Tú** |
+| 2 | **Hà Anh Tuấn** |
+| 3 | **Huỳnh Hoàng Quân** |
+| 4 | **Chăm Rốch Thi** |
+| 5 | **Nguyễn Tiến Thành** |
+| 6 | **Phạm Thành Long** |
 
 ---
 
