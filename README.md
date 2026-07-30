@@ -1,22 +1,19 @@
 # 📊 Superstore Sales Analysis
 
-<p align="center">
-  <strong>Phân tích dữ liệu bán hàng Superstore — Khám phá insight kinh doanh từ dữ liệu thực tế</strong>
-</p>
+> **Phân tích dữ liệu bán hàng Superstore — Khám phá insight kinh doanh từ dữ liệu thực tế**
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Pandas-Data%20Analysis-150458?style=for-the-badge&logo=pandas&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Matplotlib-Visualization-11557C?style=for-the-badge&logo=plotly&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Jupyter-Notebook-F37626?style=for-the-badge&logo=jupyter&logoColor=white"/>
-</p>
+![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Pandas](https://img.shields.io/badge/Pandas-Data%20Analysis-150458?style=for-the-badge&logo=pandas&logoColor=white)
+![Matplotlib](https://img.shields.io/badge/Matplotlib-Visualization-11557C?style=for-the-badge)
+![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-F37626?style=for-the-badge&logo=jupyter&logoColor=white)
 
 ---
 
 ## 👥 Thông tin Nhóm
 
 > 🏫 **Môn học:** Khoa học Dữ liệu & Phân tích (Module 4 — KADA)
-> 🏷️ **Tên Nhóm:** Nhóm KADA
+
+> 🏷️ **Tên Nhóm:** THEMIS
 
 | # | Họ và Tên | Vai trò |
 |:-:|:----------|:--------|
@@ -31,9 +28,11 @@
 
 ## 📖 Giới thiệu Dự án
 
-Dự án phân tích bộ dữ liệu **Superstore** — một dataset kinh doanh bán lẻ thực tế của Mỹ, ghi nhận **9,994 giao dịch** trong giai đoạn **2011–2014** trên toàn nước Mỹ.
+Dự án phân tích bộ dữ liệu **Superstore** — một dataset kinh doanh bán lẻ thực tế của Mỹ,
+ghi nhận **9.994 giao dịch** trong giai đoạn **2011–2014** trên toàn nước Mỹ.
 
 Mục tiêu chính của dự án:
+
 - 🔍 **Khám phá & làm sạch dữ liệu** — xử lý encoding, chuẩn hóa kiểu dữ liệu, feature engineering
 - 📈 **Phân tích thống kê** — phân phối doanh thu, lợi nhuận, discount theo segment & category
 - 🗺️ **Trực quan hóa địa lý** — vẽ bản đồ phân bố đơn hàng theo tiểu bang
@@ -45,23 +44,23 @@ Mục tiêu chính của dự án:
 
 ```
 Module4_KADA/
-│
-├── 📓 read_dataset.ipynb          # Notebook đọc & khám phá dữ liệu ban đầu
-├── 📓 superstore_analysis.ipynb   # Notebook phân tích chuyên sâu (EDA, thống kê)
-├── 📓 ceo_dashboard.ipynb         # Notebook xây dựng CEO Dashboard
-│
-├── 📄 superstore_report.md        # Báo cáo chi tiết: Data Dictionary + Cleaning Pipeline
-├── 📄 data_comparison.md          # Bảng so sánh Raw vs Cleaned Data
-│
-├── 📊 Superstore.csv              # Dataset gốc (raw, encoding latin1)
-├── 📊 Superstore_clean.csv        # Dataset sau khi làm sạch
-│
-├── 🖼️ ceo_dashboard.png           # Ảnh xuất CEO Dashboard
-├── 🖼️ geo_charts_all.png          # Biểu đồ phân tích địa lý
-├── 🖼️ geo_map_all.png             # Bản đồ phân bố địa lý
-│
-├── 🐍 explore.py                  # Script Python khám phá nhanh dữ liệu
-└── 📄 README.md                   # Tài liệu dự án (file này)
+|
+|── read_dataset.ipynb          # Notebook đọc & khám phá dữ liệu ban đầu
+|── superstore_analysis.ipynb   # Notebook phân tích chuyên sâu (EDA, thống kê)
+|── ceo_dashboard.ipynb         # Notebook xây dựng CEO Dashboard
+|
+|── superstore_report.md        # Báo cáo chi tiết: Data Dictionary + Cleaning Pipeline
+|── data_comparison.md          # Bảng so sánh Raw vs Cleaned Data
+|
+|── Superstore.csv              # Dataset gốc (raw, encoding latin1)
+|── Superstore_clean.csv        # Dataset sau khi làm sạch
+|
+|── ceo_dashboard.png           # Ảnh xuất CEO Dashboard
+|── geo_charts_all.png          # Biểu đồ phân tích địa lý
+|── geo_map_all.png             # Bản đồ phân bố địa lý
+|
+|── explore.py                  # Script Python khám phá nhanh dữ liệu
+|── README.md                   # Tài liệu dự án (file này)
 ```
 
 ---
@@ -71,7 +70,7 @@ Module4_KADA/
 | Thuộc tính | Chi tiết |
 |:-----------|:---------|
 | **Tên file** | `Superstore.csv` |
-| **Số dòng** | 9,994 giao dịch |
+| **Số dòng** | 9.994 giao dịch |
 | **Số cột** | 21 cột |
 | **Khoảng thời gian** | 01/04/2011 — 31/12/2014 (4 năm) |
 | **Quốc gia** | United States |
@@ -95,7 +94,7 @@ Module4_KADA/
 | # | Vấn đề | Mức độ ảnh hưởng |
 |:-:|:-------|:-----------------|
 | 1 | Encoding sai (`latin1` đọc như UTF-8) | Toàn bộ file |
-| 2 | `Order Date` / `Ship Date` lưu dạng chuỗi | 9,994 dòng |
+| 2 | `Order Date` / `Ship Date` lưu dạng chuỗi | 9.994 dòng |
 | 3 | `Postal Code` mất số 0 đầu (int64 → str) | **449 dòng** |
 | 4 | Cột `Row ID` dư thừa | 1 cột |
 | 5 | 1 dòng duplicate hoàn toàn | 1 dòng |
@@ -118,8 +117,7 @@ df["Postal Code"] = df["Postal Code"].astype(str).str.split(".").str[0].str.zfil
 # 4. Feature Engineering: Shipping Days
 df["Shipping Days"] = (df["Ship Date"] - df["Order Date"]).dt.days
 
-# 5. Làm sạch text & xóa cột rác
-df["Product Name"] = df["Product Name"].str.replace("\ufffd", " ", regex=False)
+# 5. Xóa cột dư thừa
 df = df.drop(columns=["Row ID"])
 
 # 6. Xuất file sạch
@@ -206,12 +204,12 @@ jupyter notebook ceo_dashboard.ipynb
 
 - ✔️ **Analytics-Ready Dataset:** Datetime, Postal Code, Shipping Days đã chuẩn hóa hoàn toàn
 - ✔️ **0 lỗi logic:** Không có đơn giao trước ngày đặt, không có Sales/Quantity âm
-- ✔️ **0 missing values:** Toàn bộ 21 cột × 9,994 dòng đầy đủ
+- ✔️ **0 missing values:** Toàn bộ 21 cột x 9.994 dòng đầy đủ
 - ✔️ **CEO Dashboard:** Tổng hợp đầy đủ KPI chiến lược với visualizations chuyên nghiệp
 - ✔️ **Geo Visualization:** Bản đồ phân bố đơn hàng theo tiểu bang nước Mỹ
 
 ---
 
 <p align="center">
-  Made with ❤️ by <strong>Nhóm KADA — Module 4</strong>
+  Made with ❤️ by <strong>Nhóm THEMIS — Module 4</strong>
 </p>
