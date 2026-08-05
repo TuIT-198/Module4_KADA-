@@ -1,6 +1,6 @@
-# 📊 Superstore Sales Analytics & AI Profit Forecasting
+# 📊 Superstore Analytics & AI Profit Forecasting
 
-> **Hệ thống Phân tích Kinh doanh & Dự báo Lợi nhuận Superstore bằng Machine Learning**
+> **Hệ thống Phân tích Kinh doanh Đa chiều, Trực quan hóa Dashboard CEO & Dự báo Lợi nhuận Superstore bằng Machine Learning**
 
 ![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![scikit-learn](https://img.shields.io/badge/scikit--learn-Machine%20Learning-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)
@@ -10,13 +10,13 @@
 
 ---
 
-## 👥 Thông tin Nhóm
+## 👥 Thông tin Nhóm Dự án
 
 > 🏫 **Môn học:** Khoa học Dữ liệu & Phân tích (Module 4 — TuIT-198 / KADA)  
 > 🏷️ **Tên Nhóm:** THEMIS
 
-| # | Họ và Tên | Thành viên |
-|:-:|:----------|:----------:|
+| # | Họ và Tên | Vai trò |
+|:-:|:----------|:-------:|
 | 1 | **Đàm Công Tú** | Thành viên |
 | 2 | **Hà Anh Tuấn** | Thành viên |
 | 3 | **Huỳnh Hoàng Quân** | Thành viên |
@@ -26,89 +26,149 @@
 
 ---
 
-## 📖 Giới thiệu Dự án
+## 📖 Tổng quan Dự án
 
-Dự án khai thác toàn diện bộ dữ liệu **Superstore** — dataset giao dịch bán lẻ của Mỹ với **9,994 đơn hàng** trong giai đoạn **2011–2014**.
+Dự án nghiên cứu và khai thác toàn diện dữ liệu bán lẻ **Superstore** (Mỹ) với **9,994 đơn hàng giao dịch** từ năm **2011 đến 2014**. Dự án kết hợp giữa **Data Engineering**, **Business Intelligence (BI)** và **Machine Learning (AI)** qua 4 trụ cột chính:
 
-Dự án bao gồm 2 phần chính:
-1. 🔍 **Phân tích dữ liệu kinh doanh (EDA & Dashboard)**: Khám phá doanh số, lợi nhuận, hành vi chiết khấu và địa lý.
-2. 🤖 **Mô hình AI Dự báo Lợi nhuận (Profit Forecasting)**: Xây dựng pipeline Machine Learning 5 bước sử dụng thuật toán **Gradient Boosting Regressor** tích hợp **Early Stopping** & **Per-Iteration Tracking** để dự báo Lợi nhuận 3 tháng tiếp theo.
+```
+┌─────────────────────────┐     ┌─────────────────────────┐
+│ 1. Data Cleaning        │ ──► │ 2. Business Analytics   │
+│ Raw Data ➔ Clean Data   │     │ EDA & Customer Segment  │
+└─────────────────────────┘     └─────────────────────────┘
+             │                               │
+             ▼                               ▼
+┌─────────────────────────┐     ┌─────────────────────────┐
+│ 3. CEO Strategic Dash   │ ──► │ 4. AI Profit Forecast   │
+│ Geographic & KPI Map    │     │ Gradient Boosting (5-St)│
+└─────────────────────────┘     └─────────────────────────┘
+```
 
 ---
 
-## 📂 Cấu trúc Thư mục Dự án
+## 🗂️ Cấu trúc Thư mục Hệ thống
 
-Workspace được tổ chức chuẩn hóa theo từng phân vùng chức năng:
+Mã nguồn và tài nguyên được tổ chức phân vùng theo tiêu chuẩn dự án Khoa học Dữ liệu:
 
 ```
 module_4/
 │
-├── 📂 data/                           # Dữ liệu dự án
-│   ├── Superstore.csv                 # Dataset gốc (encoding latin1, 9,994 dòng)
-│   └── Superstore_clean.csv           # Dataset làm sạch (UTF-8, đã xử lý missing & date)
+├── 📂 data/                           # Lưu trữ Dữ liệu gốc & Dữ liệu sạch
+│   ├── Superstore.csv                 # Dataset gốc (Raw, encoding latin1, 9,994 dòng)
+│   └── Superstore_clean.csv           # Dataset đã làm sạch (UTF-8, chuẩn hóa Datetime & Postal Code)
 │
-├── 📂 notebooks/                      # Jupyter Notebooks phân tích & AI
+├── 📂 notebooks/                      # Tập hợp các Jupyter Notebooks thực thi
 │   ├── profit_forecast_notebook.ipynb # 🌟 Notebook AI 5 Bước Dự báo Lợi nhuận (Gradient Boosting)
-│   ├── ceo_dashboard.ipynb            # Notebook xây dựng CEO Dashboard & KPI
-│   ├── superstore_analysis.ipynb      # Notebook phân tích khám phá EDA & Thống kê
-│   └── read_dataset.ipynb             # Notebook đọc & làm sạch dữ liệu ban đầu
+│   ├── ceo_dashboard.ipynb            # Notebook thiết kế CEO Dashboard & KPI Ban Lãnh đạo
+│   ├── superstore_analysis.ipynb      # Notebook Phân tích Khám phá EDA & Thống kê kinh doanh
+│   └── read_dataset.ipynb             # Notebook Khám phá ban đầu & Kiểm tra cấu trúc Data
 │
-├── 📂 outputs/                        # Hình ảnh biểu đồ & Dashboard xuất ra
-│   ├── profit_forecast_dashboard.png  # Bảng điều khiển dự báo lợi nhuận
-│   ├── profit_feature_importance.png  # Biểu đồ độ quan trọng biến
-│   ├── ceo_dashboard.png              # Ảnh chụp CEO Dashboard
-│   ├── geo_charts_all.png             # Biểu đồ phân tích địa lý
-│   └── geo_map_all.png                # Bản đồ phân bổ đơn hàng
+├── 📂 outputs/                        # Tài nguyên Biểu đồ & Dashboard xuất ra
+│   ├── profit_forecast_dashboard.png  # Báo cáo tổng hợp dự báo lợi nhuận
+│   ├── profit_feature_importance.png  # Biểu đồ mức độ quan trọng đặc trưng (Feature Importance)
+│   ├── ceo_dashboard.png              # Hình ảnh CEO Strategic Dashboard
+│   ├── geo_charts_all.png             # Biểu đồ trực quan địa lý theo State / City
+│   └── geo_map_all.png                # Bản đồ phân bổ đơn hàng theo khu vực
 │
-├── 📂 reports/                        # Báo cáo Markdown & Đối chiếu
-│   ├── superstore_report.md           # Báo cáo chi tiết: Data Dictionary & Cleaning Pipeline
-│   └── data_comparison.md             # Bảng đối chiếu Raw Data vs Cleaned Data
+├── 📂 reports/                        # Báo cáo kỹ thuật & Tài liệu đối chiếu
+│   ├── superstore_report.md           # Báo cáo kỹ thuật: Data Dictionary & Cleaning Pipeline
+│   └── data_comparison.md             # Bảng đối chiếu so sánh Raw Data vs Cleaned Data
 │
-├── 📂 scripts/                        # Script Python chạy độc lập
-│   ├── profit_forecast.py             # Script Python chạy huấn luyện & dự báo tự động
-│   └── explore.py                     # Script Python kiểm tra & khám phá nhanh dữ liệu
+├── 📂 scripts/                        # Các Script Python độc lập
+│   ├── profit_forecast.py             # Script Python chạy tự động Pipeline AI & CFO Insights
+│   └── explore.py                     # Script Python kiểm tra nhanh thông tin dữ liệu
 │
-└── README.md                          # Tài liệu dự án (File này)
+└── README.md                          # Tài liệu tổng quan dự án (File này)
 ```
 
 ---
 
-## 🤖 Pipeline Training AI Dự báo Lợi nhuận (5 Bước Chuẩn hóa)
+## 🧹 1. Quy trình Làm sạch Dữ liệu (Data Cleaning & Engineering)
 
-Mô hình dự báo Lợi nhuận được xây dựng theo quy trình 5 bước nghiêm ngặt:
+Dữ liệu thô (`Superstore.csv`) chứa các lỗi mã hóa và định dạng được xử lý qua pipeline:
+
+### Vấn đề xử lý trong Raw Data
+
+| # | Vấn đề phát hiện | Mức độ ảnh hưởng | Giải pháp xử lý |
+|:-:|:---|:---:|:---|
+| 1 | Mã hóa ký tự sai (`latin1`) | File gốc | Đọc file bằng `encoding='latin1'`, xuất file sạch `utf-8-sig` |
+| 2 | `Order Date` & `Ship Date` dạng chuỗi | 9,994 dòng | Chuyển đổi sang `pd.to_datetime` định dạng chuẩn |
+| 3 | `Postal Code` bị mất số `0` đầu | 449 dòng | Chuẩn hóa dạng chuỗi 5 chữ số (`zfill(5)`) |
+| 4 | Cột dư thừa `Row ID` | 1 cột | Xóa khỏi bộ dữ liệu để tối ưu kích thước |
+| 5 | Feature Engineering | Dòng thời gian | Tạo thêm cột `Shipping Days = Ship Date - Order Date` |
+
+*Tài liệu chi tiết:* 📄 [Báo cáo Làm sạch Dữ liệu (reports/superstore_report.md)](./reports/superstore_report.md) | 📄 [So sánh Raw vs Cleaned (reports/data_comparison.md)](./reports/data_comparison.md)
+
+---
+
+## 📈 2. Phân tích Kinh doanh & Insight (EDA & Customer Analysis)
+
+Thực hiện trong `notebooks/superstore_analysis.ipynb`:
+
+### Key Insights Kinh doanh
+* **Lợi nhuận theo Ngành hàng (Category)**:
+  * 🏆 **Technology** dẫn đầu lợi nhuận: Tổng LN **$145,455** (Trung bình **$78.75/đơn**).
+  * 📦 **Office Supplies**: Tổng LN **$122,491** (Trung bình **$20.33/đơn**).
+  * ⚠️ **Furniture** biên lợi nhuận mỏng nhất: Tổng LN **$18,451** (Trung bình chỉ **$8.70/đơn**).
+* **Tác động của Chiết khấu (Discount vs Profitability)**:
+  * Khi mức Discount $\le 20\%$, lợi nhuận đạt mức tối ưu.
+  * Khi Discount $> 20\%$, biên lợi nhuận tụt dốc thảm hại (gây lỗ cho đơn hàng).
+* **Khách hàng theo Phân đoạn (Segment)**:
+  * **Consumer** chiếm thị phần lớn nhất ($51\%$), nhưng **Home Office** đạt lợi nhuận trung bình trên đơn cao nhất (**$33.82/đơn**).
+
+---
+
+## 🗺️ 3. Dashboard Ban Lãnh Đạo (CEO Strategic Dashboard)
+
+Thực hiện trong `notebooks/ceo_dashboard.ipynb` và xuất ra `outputs/ceo_dashboard.png`:
+
+* **Khung KPI Chiến lược**:
+  * 💰 **Tổng Doanh thu (Sales)**: $\$2,297,201$
+  * 📈 **Tổng Lợi nhuận (Profit)**: $\$286,397$
+  * 🏷️ **Tỷ lệ Chiết khấu trung bình**: $15.62\%$
+  * 🚚 **Thời gian giao hàng trung bình**: $3.96 \text{ ngày}$
+* **Bản đồ Phân bổ Địa lý (Geographic Map)**:
+  * Trực quan hóa thị phần đơn hàng theo 4 vùng Region (West, East, Central, South) và các tiểu bang trọng điểm (California, New York).
+
+---
+
+## 🤖 4. Mô hình AI Dự báo Lợi nhuận (Profit Forecasting Pipeline)
+
+Thực hiện trong `notebooks/profit_forecast_notebook.ipynb` và `scripts/profit_forecast.py`:
+
+Pipeline huấn luyện Machine Learning 5 bước sử dụng **Gradient Boosting Regressor**:
 
 ```
-[1. Preprocessing] ──► [2. Train/Test Split] ──► [3. Gradient Boosting CV] ──► [4. Evaluation] ──► [5. 3-Month Forecast]
+[1. Preprocessing] ──► [2. Train/Test Split] ──► [3. Iteration & Early Stop] ──► [4. Evaluation & 4 Charts] ──► [5. 3-Month Forecast]
 ```
 
-### 1️⃣ Bước 1 – Tiền xử lý Dữ liệu
-* **Features**: Select 5 đặc trưng quan trọng: `Sales`, `Discount`, `Quantity`, `Category`, `Region`.
-* **Preprocessing Pipeline**: `StandardScaler` cho biến số, `OneHotEncoder` cho biến danh mục.
+### Chi tiết 5 Bước triển khai:
 
-### 2️⃣ Bước 2 – Phân chia Train / Test (80% / 20%)
-* Chia **80% Train** (học) / **20% Test** (thi).
-* Áp dụng `shuffle=False` giữ đúng dòng thời gian thực tế (tránh rò rỉ dữ liệu / Look-ahead bias).
+1. **Bước 1 – Preprocessing**: 
+   * Chọn 5 features: `Sales`, `Discount`, `Quantity`, `Category`, `Region`.
+   * Sử dụng `StandardScaler` cho biến số, `OneHotEncoder` cho biến danh mục.
+2. **Bước 2 – Train/Test Split (80% / 20%)**:
+   * Chia 80% Train, 20% Test theo chuỗi thời gian (`shuffle=False`).
+3. **Bước 3 – Huấn luyện với Early Stopping & Nhật ký Iteration**:
+   * Thiết lập siêu tham số: `n_estimators=300`, `learning_rate=0.05`, `max_depth=5`, `subsample=0.8`.
+   * Tích hợp **Early Stopping** (`n_iter_no_change=15`, `tol=1e-4`).
+   * Ghi nhật ký chi tiết `Train Loss`, `Val Loss`, `Train R²`, `Val R²`, `Val MAE` theo từng vòng lặp. Mô hình tự động **dừng tối ưu tại Vòng thứ 38 (`🏆 BEST`)**.
+4. **Bước 4 – Đánh giá Chi tiết & Bộ 4 Biểu đồ Matplotlib**:
+   * **Biểu đồ 1**: Train vs Validation R² Score theo Iteration.
+   * **Biểu đồ 2**: Train Loss vs Validation Loss (MSE) theo Iteration.
+   * **Biểu đồ 3**: Biểu đồ Actual vs Predicted Profit ($1:1$).
+   * **Biểu đồ 4**: Feature Importance (Mức độ đóng góp đặc trưng).
+5. **Bước 5 – Dự báo Lợi nhuận 3 Tháng tiếp theo**:
+   * Re-train mô hình trên 100% dữ liệu lịch sử và kết hợp với tỷ lệ tăng trưởng doanh thu.
 
-### 3️⃣ Bước 3 – Huấn luyện Gradient Boosting & Early Stopping
-* **Thuật toán**: `GradientBoostingRegressor(n_estimators=300, learning_rate=0.05, max_depth=5, subsample=0.8)`.
-* **Cơ chế Early Stopping**: Dừng sớm sau 15 vòng nếu Validation Loss không cải thiện (`n_iter_no_change=15`).
-* **Tracking**: Ghi nhật ký đầy đủ `Train Loss`, `Val Loss`, `Train R²`, `Val R²`, `Val MAE` theo từng vòng lặp (Iteration). Mô hình đạt trạng thái **tối ưu nhất tại Vòng 38 (`🏆 BEST`)**.
+### Bảng Kết quả Đánh giá Mô hình AI
 
-### 4️⃣ Bước 4 – Đánh giá Mô hình & Trực quan hóa Matplotlib
-Trực quan hóa bộ 4 biểu đồ chuyên nghiệp:
-1. **Train vs Validation Metric (R² Score)** theo từng Iteration.
-2. **Train Loss vs Validation Loss (MSE)** theo từng Iteration.
-3. **Actual vs Predicted Profit** (Scatter plot 1:1).
-4. **Feature Importance** (Biểu đồ đóng góp % của các đặc trưng).
-
-| Chỉ số | Lúc Học (5-Fold CV) | Lúc Thi (Test Set 20%) | Ý nghĩa Business |
+| Chỉ số Đánh giá | Lúc Học (5-Fold CV) | Lúc Thi (Test Set 20%) | Ý nghĩa Quản trị Tài chính |
 |:---|:---:|:---:|:---|
-| **$R^2$ Score** | $58.20\%$ | **$68.96\%$** | Mô hình giải thích được $68.96\%$ biến động Profit |
+| **$R^2$ Score** | $58.20\%$ | **$68.96\%$** | AI giải thích được $68.96\%$ biến động Lợi nhuận |
 | **MAE** | $\$31.20$ | **$\pm \$26.97$** | Mức chênh lệch trung bình từng đơn hàng |
 | **RMSE** | $\$135.10$ | **$\$126.45$** | Thước đo phạt nặng các đơn hàng bất thường |
 
-### 5️⃣ Bước 5 – Dự báo Lợi nhuận 3 Tháng tiếp theo
-Re-train trên 100% dữ liệu lịch sử và kết hợp với tốc độ tăng trưởng doanh thu hàng tháng:
+### Kết quả Dự báo Lợi nhuận 3 Tháng tới
 
 | Tháng Dự báo | Doanh thu ước tính | Lợi nhuận ước tính | Biên LN (%) |
 |:---:|:---:|:---:|:---:|
@@ -126,10 +186,10 @@ Re-train trên 100% dữ liệu lịch sử và kết hợp với tốc độ t�
 
 ### 2. Cài đặt Virtual Environment & Dependencies
 ```powershell
-# Kích hoạt môi trường venv
+# Kích hoạt môi trường venv sẵn có trong repo
 .\.venv\Scripts\Activate.ps1
 
-# Cài đặt các thư viện cần thiết
+# Cài đặt thư viện phụ thuộc (nếu cần)
 pip install pandas numpy scikit-learn matplotlib seaborn jupyter ipykernel
 ```
 
@@ -138,31 +198,35 @@ pip install pandas numpy scikit-learn matplotlib seaborn jupyter ipykernel
 python -m ipykernel install --user --name "module4-venv" --display-name "Python (Module4 venv)"
 ```
 
-### 4. Chạy Dự án
+### 4. Khởi chạy Mô hình & Notebooks
 
-#### 👉 Chạy bằng Script Python tự động:
+#### 👉 Cách 1: Chạy bằng Script Python tự động
 ```powershell
 python scripts/profit_forecast.py
 ```
 
-#### 👉 Chạy bằng Jupyter Lab:
+#### 👉 Cách 2: Chạy bằng Jupyter Lab
 ```powershell
 jupyter lab
 ```
-1. Truy cập thư mục `notebooks/`.
-2. Mở notebook `profit_forecast_notebook.ipynb`.
+1. Mở thư mục `notebooks/`.
+2. Chọn Notebook muốn chạy (ví dụ: `profit_forecast_notebook.ipynb` hoặc `ceo_dashboard.ipynb`).
 3. Chọn Kernel **`Python (Module4 venv)`** ở góc trên bên phải.
 4. Chọn **`Kernel` → `Restart Kernel and Run All Cells...`**.
 
 ---
 
-## 📑 Tài liệu Tham khảo
+## 📑 Danh mục Tài liệu & Đầu ra Dự án
 
-- 📄 [Báo cáo chi tiết dataset (reports/superstore_report.md)](./reports/superstore_report.md) — Data Dictionary & Cleaning Pipeline
-- 📄 [So sánh Raw vs Cleaned (reports/data_comparison.md)](./reports/data_comparison.md) — Bảng đối chiếu trước/sau làm sạch
+- 📓 **Notebook AI Dự báo**: [`notebooks/profit_forecast_notebook.ipynb`](./notebooks/profit_forecast_notebook.ipynb)
+- 📓 **Notebook CEO Dashboard**: [`notebooks/ceo_dashboard.ipynb`](./notebooks/ceo_dashboard.ipynb)
+- 📓 **Notebook Phân tích EDA**: [`notebooks/superstore_analysis.ipynb`](./notebooks/superstore_analysis.ipynb)
+- 📄 **Báo cáo Kỹ thuật Làm sạch Data**: [`reports/superstore_report.md`](./reports/superstore_report.md)
+- 📄 **So sánh Data Trước & Sau**: [`reports/data_comparison.md`](./reports/data_comparison.md)
+- 🐍 **Script Python Dự báo**: [`scripts/profit_forecast.py`](./scripts/profit_forecast.py)
 
 ---
 
-<p center="align">
-  <i>© 2026 Nhóm THEMIS — Module 4 KADA (TuIT-198)</i>
+<p align="center">
+  <b>© 2026 Nhóm THEMIS — Module 4 KADA (TuIT-198)</b>
 </p>
